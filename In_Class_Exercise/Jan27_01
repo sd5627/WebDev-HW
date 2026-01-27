@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>HTML Form Elements</title>
+  </head>
+  <body>
+    <!-- Command + / to comment in whatever language you are currently writing-->
+     <P>Here is a form containning basic input types. For more information please see
+      <a href="https://www.w3schools.com/html/html_forms.asp" target="_blank"
+      >w3 schools tutorials</a>
+    </a>
+
+    <!-- the form tag itself, is not visible on the page. 
+     It wrapes form elements and bakes in some broswer default behavior. 
+     Like: Hitting enter key to submit a small form. 
+     clicking any button inside the form tag will alsos submit the form. -->
+     <form name="contactUs"></form>
+     <!-- The name attribute is super important. This tells JS or whatever backend language 
+      what form this is and where to write the NAMED input values in your to API -->
+      <!-- action attribute is the script or functionor API endpoint to process the form date -->
+
+    <!-- https://www.w3schools.com/tags/att_form_method.asp
+     GET - Retreive/read data
+     POST - Writing to DB or sending onff to REST API endpoint
+     PUT - Edit/Update entry
+     Delete - deletes a record
+     usually you need to send off some unique ID to know what item to delete -->
+
+      <form 
+      name="contactUs" 
+      target="_self" 
+      action="userLogin.js"
+      method="POST">
+      <!-- This is an old school tag. It's a way of "grouping" from inputs visual without -->
+       <fieldset>
+        <!-- Legend is the title of this form group / fieldset -->
+         <legend> Simple Text Input</legend>
+      <p>
+         The box and title seen are created by fieldset and legend tags. Think 
+         modern day form groups or input groups
+      </p>
+
+      <!-- Inputs change apperience and behavior based on the type attribute. If you -->
+      <input type="text" name="firstName" />
+
+      ></form>
+
+  </body>
+</html>
