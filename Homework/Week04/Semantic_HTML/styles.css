@@ -1,0 +1,117 @@
+/* ===== Base ===== */
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  background-color: #f2f4f7;
+  color: #222;
+}
+
+/* ===== Header ===== */
+.site-header {
+  background-color: #0b4f6c;
+  color: white;
+  padding: 1.5rem 2rem;
+}
+
+.site-header h1 {
+  margin: 0;
+}
+
+.site-header nav {
+  margin-top: 0.5rem;
+}
+
+.site-header a {
+  color: white;
+  text-decoration: none;
+  margin-right: 1.5rem;
+}
+
+/* ===== Page Layout ===== */
+.page {
+  max-width: 1100px;
+  margin: 3rem auto;
+  padding: 0 1rem;
+}
+
+/* ===== Recipe Card ===== */
+.recipe-card {
+  background-color: white;
+  border-radius: 12px;
+  padding: 2.5rem;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+/* ===== Hero ===== */
+.recipe-hero h2 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.description {
+  font-size: 1.1rem;
+  color: #555;
+}
+
+/* ===== Meta ===== */
+.recipe-meta {
+  display: flex;
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.meta-box {
+  background-color: #f7f9fb;
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  text-align: center;
+  flex: 1;
+}
+
+.meta-box span {
+  display: block;
+  margin-top: 0.3rem;
+  font-weight: bold;
+}
+
+/* ===== Content ===== */
+.recipe-content {
+  display: flex;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.box {
+  background-color: #fafafa;
+  padding: 2rem;
+  border-radius: 10px;
+}
+
+.ingredients {
+  width: 35%;
+}
+
+.directions {
+  width: 65%;
+}
+
+/* ===== Headings ===== */
+h3 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid #0b4f6c;
+  padding-bottom: 0.5rem;
+}
+
+/* ===== Footer ===== */
+.site-footer {
+  text-align: center;
+  margin: 3rem 0;
+  color: #777;
+}
+
+.site-footer {
+  text-align: center;
+  margin: 3rem 0;
+  color: #777;
+}

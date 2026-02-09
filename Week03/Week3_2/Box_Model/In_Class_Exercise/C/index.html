@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1"
+    />
+    <title>Simple Navbar | Inline-Block</title>
+    
+
+    <style type="text/CSS">
+      h2 {
+        color: blueviolet;
+        background-color:rgb(114, 220, 220);
+        
+      }
+
+      body {
+        font-family:'Courier New', Courier, monospace;';
+        margin: 0;
+        padding: 0;
+
+      }
+
+      ul {
+        /* remove all bullet points */
+        list-style-type: none;
+        overflow: hidden;
+        background-color: cornflowerblue;
+        /* make the parent element's font size 0 when 
+        using inline block o get rid of the tiny annoying 
+        space between letters (because inline is usaully for text) 
+        */
+
+        /* font-size: 0; */
+        }
+      
+        li {
+          /* li display BLOCK by default, they dont want to share horizontal space with other elements *?
+          /* we are making these lis display inline-Block which allows 
+          us to size elements like a block but we can also stack elements horizontally like an inline element */
+          display: inline-block;
+          font-size: 1rem;
+          width: 200px;
+        }
+        /* decendent selector -loooks for a pattern of elements on the page */
+        /* this is looking for only the anchor tags inside of a LI */
+        /* making an inline element display block will make it fill the space of the parent element */
+
+        li a {
+          display: block;
+          text=align: center;
+          /* make it big and chunky like a button */
+          width: 100px;
+          padding: 10px;
+          /*padding-top: 50px; */
+          /* remove all of that default link styling */
+          color: chartreuse;
+          text-decoration: none;
+
+        }
+
+        /* highlight the active page in the menu */
+        .active {
+          background-color: cornflowerblue;
+
+        }
+
+        /* npseudo class slector */
+        li a:hover {
+          background-color: cyane;
+        }
+
+      .align_rightn {
+        width: 50%;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- inline styling this will override any stylesheets above-->
+     <h1 style="margin: 20px 10px 5px 5px">Heading 1 Displays Block</h1>
+
+     <p class="align_right">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur a 
+
+     </p>
+  </body>
+</html>
+      <nav>
+        <ul>
+          <li><a href="#">Link 1</a></li>
+          <li>
+            <a
+              class="active"
+              href="#"
+              >Link 2</a
+            >
+          </li>
+          <li><a href="#">Link 3</a></li>
+          <li><a href="#">Link 4</a></li>
+        </ul>
+      </nav>
+    </header>
+  </body>
+</html>

@@ -1,0 +1,39 @@
+------------------------------------------------
+<header>
+  Site Logo | Navigation
+</header>
+------------------------------------------------
+<main>
+  <article class="recipe">
+    
+    <section class="recipe-hero">
+      Recipe Title
+      Short description
+      Image
+    </section>
+
+    <section class="recipe-meta">
+      Prep Time | Cook Time | Servings
+    </section>
+
+    <div class="content">
+      <aside class="ingredients">
+        Ingredients list
+      </aside>
+
+      <section class="instructions">
+        Step-by-step instructions
+      </section>
+    </div>
+
+    <section class="notes">
+      Tips / Variations
+    </section>
+
+  </article>
+</main>
+------------------------------------------------
+<footer>
+  Copyright | Links
+</footer>
+------------------------------------------------
