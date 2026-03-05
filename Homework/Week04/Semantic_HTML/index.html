@@ -9,12 +9,54 @@
 <body>
 
 <header class="site-header">
-  <h1>My Recipe Site</h1>
-  <nav>
+
+  <div class="logo">
+    <svg viewBox="0 0 500 260" class="brand">
+
+      <!-- 弧线（往下+更自然） -->
+      <path id="curve"
+            d="M 70 155 A 185 185 0 0 1 430 155"
+            fill="transparent"/>
+
+      <!-- 主标题 -->
+      <text class="brand-title">
+        <textPath href="#curve" startOffset="50%" text-anchor="middle">
+          SHIHAN'S
+        </textPath>
+      </text>
+
+      <!-- 副标题（更靠近） -->
+      <text x="250" y="110" class="brand-sub">
+        EST. 2026
+      </text>
+
+      <!-- 蝴蝶结 -->
+      <g transform="translate(250,230) scale(1.05)">
+        <!-- 左翼 -->
+        <path d="M-95 0
+                 Q-60 -45 -18 -18
+                 Q-40 15 -95 0Z"
+              fill="white"/>
+
+        <!-- 右翼 -->
+        <path d="M95 0
+                 Q60 -45 18 -18
+                 Q40 15 95 0Z"
+              fill="white"/>
+
+        <!-- 中间结 -->
+        <ellipse cx="0" cy="0" rx="16" ry="11" fill="white"/>
+      </g>
+
+    </svg>
+  </div>
+
+  <nav class="main-nav">
     <a href="#">Home</a>
     <a href="#">Recipes</a>
     <a href="#">About</a>
   </nav>
+
 </header>
 
 <main class="page">

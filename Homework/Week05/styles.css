@@ -1,0 +1,518 @@
+/* ========================================= */
+/* ================= Base ================== */
+/* ========================================= */
+
+body{
+  margin:0;
+  font-family:system-ui, sans-serif;
+  background:white;
+  color:#222;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+
+/* ========================================= */
+/* ================= HEADER ================= */
+/* ========================================= */
+
+.site-header{
+  background:#DC143C;
+  color:white;
+  padding:80px 0 40px;
+  text-align:center;
+}
+
+.brand{
+  width:600px;
+  height:320px;
+  display:block;
+  margin:0 auto;
+}
+
+.brand-title{
+  font-family:"Herbus", serif;
+  font-size:60px;
+  fill:white;
+  font-weight:700;
+  letter-spacing:1px;
+}
+
+.brand-sub{
+  font-family:"Herbus", serif;
+  font-size:22px;
+  fill:white;
+  font-weight:400;
+  letter-spacing:1px;
+}
+
+.main-nav{
+  margin-top:25px;
+  display:flex;
+  justify-content:center;
+  gap:70px;
+}
+
+.main-nav a{
+  position:relative;
+  text-decoration:none;
+  color:white;
+  font-size:18px;
+  font-weight:600;
+  padding-bottom:6px;
+}
+
+.main-nav a::after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:0;
+  width:0;
+  height:3px;
+  background:white;
+  transition:.3s;
+}
+
+.main-nav a:hover::after,
+.main-nav a.active::after{
+  width:100%;
+}
+
+
+/* ========================================= */
+/* ================= Layout ================= */
+/* ========================================= */
+
+.page{
+  max-width:1100px;
+  margin:3rem auto;
+  padding:0 1rem;
+}
+
+
+/* ========================================= */
+/* ============= Recipe Detail ============= */
+/* ========================================= */
+
+.recipe-card{
+  background:white;
+  border-radius:18px;
+  padding:3rem;
+  box-shadow:0 12px 35px rgba(0,0,0,0.08);
+}
+
+.recipe-hero-image{
+  width:100%;
+  max-height:360px;
+  object-fit:cover;
+  border-radius:18px;
+  margin-bottom:35px;
+}
+
+.recipe-card h2{
+  text-align:center;
+  font-size:42px;
+  font-weight:800;
+  margin:0 0 10px;
+}
+
+.description{
+  text-align:center;
+  font-size:18px;
+  font-weight:600;
+  color:#555;
+  margin-bottom:40px;
+}
+
+.recipe-meta{
+  display:flex;
+  gap:30px;
+  justify-content:center;
+  margin:40px 0;
+}
+
+.meta-box{
+  background:#DC143C;
+  color:white;
+  padding:1.3rem;
+  border-radius:16px;
+  text-align:center;
+  flex:1;
+  font-weight:600;
+  transition:.3s;
+}
+
+.meta-box span{
+  display:block;
+  margin-top:8px;
+  font-size:22px;
+  font-weight:800;
+}
+
+.meta-box:hover{
+  transform:translateY(-6px);
+  box-shadow:0 10px 25px rgba(220,20,60,0.3);
+}
+
+.recipe-content{
+  display:flex;
+  gap:3rem;
+  margin-top:3rem;
+}
+
+.box{
+  background:#fafafa;
+  padding:2.2rem;
+  border-radius:16px;
+  box-shadow:0 5px 18px rgba(0,0,0,0.04);
+}
+
+.ingredients{
+  width:35%;
+}
+
+.directions{
+  width:65%;
+}
+
+.box h3{
+  margin-top:0;
+  margin-bottom:1.2rem;
+  font-size:20px;
+  border-bottom:3px solid #DC143C;
+  padding-bottom:8px;
+}
+
+
+/* ========================================= */
+/* ============ Recipes Gallery ============ */
+/* ========================================= */
+
+.recipes-page{
+  padding:40px 80px;
+}
+
+.category-nav{
+  display:flex;
+  gap:20px;
+  margin-bottom:40px;
+  position:sticky;
+  top:0;
+  background:white;
+  padding:15px 0;
+  z-index:100;
+}
+
+.category-nav a{
+  text-decoration:none;
+  padding:8px 18px;
+  border-radius:20px;
+  border:2px solid #DC143C;
+  color:#DC143C;
+  font-weight:bold;
+  transition:.2s;
+}
+
+.category-nav a:hover{
+  background:#DC143C;
+  color:white;
+}
+
+.recipes-page section{
+  margin-bottom:80px;
+}
+
+section h2{
+  margin-bottom:20px;
+  border-bottom:2px solid #ddd;
+  padding-bottom:10px;
+}
+
+.recipe-gallery{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));
+  gap:40px;
+  margin-top:30px;
+}
+
+.recipe-item{
+  background:white;
+  border-radius:20px;
+  overflow:hidden;
+  text-decoration:none;
+  color:#222;
+  box-shadow:0 10px 30px rgba(0,0,0,0.06);
+  transition:.3s;
+}
+
+.recipe-item img{
+  width:100%;
+  height:240px;
+  object-fit:cover;
+}
+
+.recipe-item h3{
+  font-size:22px;
+  padding:18px 20px 6px;
+  margin:0;
+}
+
+.recipe-item p{
+  padding:0 20px 20px;
+  margin:0;
+  color:#666;
+  font-size:15px;
+}
+
+.recipe-item:hover{
+  transform:translateY(-10px);
+  box-shadow:0 15px 40px rgba(0,0,0,0.12);
+}
+
+
+/* ========================================= */
+/* ===== Recipe Detail Top Gallery ========= */
+/* ========================================= */
+
+.recipe-gallery-top{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+  margin-bottom:40px;
+}
+
+.recipe-gallery-top img{
+  width:100%;
+  aspect-ratio:1/1;
+  object-fit:cover;
+  border-radius:18px;
+}
+
+
+/* ========================================= */
+/* ========== Recipe Detail Header ========= */
+/* ========================================= */
+
+.detail-header{
+  background:#DC143C;
+  height:120px;
+  display:flex;
+  align-items:center;
+  padding-left:40px;
+}
+
+.back-btn{
+  color:white;
+  text-decoration:none;
+  font-size:18px;
+  font-weight:600;
+  position:relative;
+  padding-bottom:5px;
+}
+
+.back-btn::after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:0;
+  width:0;
+  height:2px;
+  background:white;
+  transition:.3s;
+}
+
+.back-btn:hover::after{
+  width:100%;
+}
+
+
+/* ========================================= */
+/* ================= HERO ================== */
+/* ========================================= */
+
+.hero-wrapper{
+  position:relative;
+  height:200vh;
+  background:white;
+}
+
+.hero-image{
+  position:sticky;
+  top:0;
+  height:100vh;
+  z-index:1;
+}
+
+.hero-image img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transition:.6s;
+}
+
+.hero-intro{
+  height:100vh;
+  background:white;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  position:relative;
+  z-index:2;
+}
+
+.hero-text h1{
+  font-size:64px;
+  font-weight:800;
+  margin-bottom:20px;
+  transition:.4s;
+}
+
+.hero-text .hero-sub{
+  font-size:20px;
+  font-weight:600;
+  margin-bottom:40px;
+  transition:.4s;
+}
+
+.cta-btn{
+  display:inline-block;
+  background:#DC143C;
+  color:white;
+  padding:16px 45px;
+  border-radius:50px;
+  text-decoration:none;
+  font-weight:700;
+  font-size:18px;
+  transition:.3s;
+}
+
+.cta-btn:hover{
+  transform:translateY(-4px);
+  box-shadow:0 12px 25px rgba(220,20,60,0.3);
+}
+
+.hero-wrapper.active .hero-text h1,
+.hero-wrapper.active .hero-text .hero-sub{
+  color:#DC143C;
+}
+
+.hero-wrapper.active .hero-image img{
+  filter:brightness(0.55);
+}
+
+
+/* ========================================= */
+/* ============ EXPLORE SECTION ============ */
+/* ========================================= */
+
+.home-feature{
+  padding:120px 60px;
+  text-align:center;
+  background:#DC143C;
+}
+
+.home-feature h2{
+  font-size:32px;
+  font-weight:800;
+  margin-bottom:50px;
+  color:white;
+  border-bottom:2px solid rgba(255,255,255,0.4);
+  padding-bottom:10px;
+}
+
+.home-gallery{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(280px,1fr));
+  gap:40px;
+}
+
+.home-card{
+  background:white;
+  border-radius:20px;
+  overflow:hidden;
+  text-decoration:none;
+  color:#222;
+  box-shadow:0 10px 30px rgba(0,0,0,0.06);
+  transition:.3s;
+}
+
+.home-card img{
+  width:100%;
+  height:260px;
+  object-fit:cover;
+}
+
+.home-card h3{
+  font-size:22px;
+  padding:20px 20px 5px;
+  margin:0;
+}
+
+.home-card p{
+  padding:0 20px 25px;
+  margin:0;
+  color:#666;
+}
+
+.home-card:hover{
+  transform:translateY(-10px);
+  box-shadow:0 15px 40px rgba(0,0,0,0.15);
+}
+
+
+/* ========================================= */
+/* ============ BUDGET SECTION ============= */
+/* ========================================= */
+
+.budget-section{
+  padding:120px 60px;
+  text-align:center;
+  background:#f2f4f7;
+}
+
+.budget-section h2{
+  font-size:34px;
+  font-weight:800;
+  margin-bottom:20px;
+}
+
+.budget-sub{
+  max-width:700px;
+  margin:0 auto 60px;
+  font-size:18px;
+  color:#555;
+}
+
+.budget-boxes{
+  display:flex;
+  justify-content:center;
+  gap:40px;
+  flex-wrap:wrap;
+}
+
+.budget-card{
+  background:white;
+  padding:40px;
+  border-radius:20px;
+  width:260px;
+  transition:.3s;
+}
+
+.budget-card:hover{
+  transform:translateY(-8px);
+}
+
+
+/* ========================================= */
+/* ================= FOOTER ================= */
+/* ========================================= */
+
+.site-footer{
+  text-align:center;
+  padding:40px 0;
+  background:white;
+  color:#777;
+}

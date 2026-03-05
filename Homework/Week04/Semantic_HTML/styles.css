@@ -6,11 +6,41 @@ body {
   color: #222;
 }
 
-/* ===== Header ===== */
+.logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: visible;
+}
+
+.brand {
+    width: 460px;
+    height: 260px;
+    display: block;
+    margin: 0 auto;
+    overflow: visible;
+}
+
+.brand-title {
+    font-family: "DinaChaumont", serif;
+    font-size: 70px;
+    fill: white;
+    letter-spacing: 4px;
+}
+
+.brand-sub {
+    font-family: "DinaChaumont", serif;
+    font-size: 22px;
+    fill: white;
+    letter-spacing: 3px;
+    text-anchor: middle;
+}
+
+
 .site-header {
-  background-color: #0b4f6c;
+  background-color: #dc143c;
   color: white;
-  padding: 1.5rem 2rem;
+  padding: 60px 0 30px 0;
 }
 
 .site-header h1 {
@@ -18,13 +48,18 @@ body {
 }
 
 .site-header nav {
-  margin-top: 0.5rem;
+  margin-top: 1.2rem;
+  margin-left: 120px;
 }
 
 .site-header a {
   color: white;
   text-decoration: none;
-  margin-right: 1.5rem;
+  margin-right: 1rem;
+  padding: 6px 14px;
+  border: 2px solid white;
+  border-radius: 20px;
+  transition: 0.25s;
 }
 
 /* ===== Page Layout ===== */
@@ -114,4 +149,26 @@ h3 {
   text-align: center;
   margin: 3rem 0;
   color: #777;
+}
+
+/* NAV style upgrade */
+.main-nav {
+  margin-top: 10px;
+  margin-left: 140px;
+}
+
+.main-nav a {
+  color: white;
+  text-decoration: none;
+  margin-right: 14px;
+  padding: 7px 16px;
+  border: 2px solid white;
+  border-radius: 25px;
+  font-weight: 500;
+  transition: 0.25s ease;
+}
+
+.main-nav a:hover {
+  background: white;
+  color: #dc143c;
 }

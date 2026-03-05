@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shihan's Kitchen</title>
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+
+<body>
+
+
+<header class="site-header">
+
+<div class="logo">
+
+<svg viewBox="0 0 600 420" class="brand">
+
+<defs>
+<path id="arc"
+d="M 100 260 A 200 200 0 0 1 500 260"
+fill="transparent"/>
+</defs>
+
+<text class="brand-title">
+<textPath href="#arc" startOffset="50%" text-anchor="middle">
+SHIHAN'S KITCHEN
+</textPath>
+</text>
+
+<text x="300" y="230" text-anchor="middle" class="brand-sub">
+EST. 2026
+</text>
+
+<ellipse cx="260" cy="280" rx="35" ry="18" fill="white"/>
+<circle cx="300" cy="285" r="10" fill="white"/>
+<ellipse cx="340" cy="280" rx="35" ry="18" fill="white"/>
+
+</svg>
+
+</div>
+
+
+<nav class="main-nav">
+
+<a href="home.html" class="active">Home</a>
+<a href="recipes.html">Recipes</a>
+<a href="about.html">About</a>
+
+</nav>
+
+</header>
+
+
+
+<main>
+
+
+<!-- HERO -->
+
+<section class="hero-wrapper">
+
+<div class="hero-image">
+<img src="images/home_1.jpg" alt="Food image" loading="lazy">
+</div>
+
+
+<div class="hero-intro">
+
+<div class="hero-text">
+
+<h1>Bringing warmth to your everyday kitchen</h1>
+
+<p class="hero-sub">
+Healthy eating with basic Chinese food and fusions
+</p>
+
+<a href="recipes.html" class="cta-btn">Get started</a>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- FEATURED RECIPES -->
+
+<section class="home-feature">
+
+<h2>Explore your own recipe</h2>
+
+<div class="home-gallery">
+
+
+<a href="recipes/basque-cheesecake.html" class="home-card">
+
+<img src="images/basque cheesecake.jpg" alt="Basque Cheesecake" loading="lazy">
+
+<h3>Basque Cheesecake</h3>
+
+<p>巴斯克蛋糕</p>
+
+</a>
+
+
+<a href="recipes/argentine-steak.html" class="home-card">
+
+<img src="images/argentine pan-seared steak.jpg" alt="Argentine Steak" loading="lazy">
+
+<h3>Argentine Pan-Seared Steak</h3>
+
+<p>阿根廷香煎牛排</p>
+
+</a>
+
+
+<a href="recipes/eggs-benedict.html" class="home-card">
+
+<img src="images/eggs benedict.jpg" alt="Eggs Benedict" loading="lazy">
+
+<h3>Eggs Benedict</h3>
+
+<p>班尼迪克蛋</p>
+
+</a>
+
+
+</div>
+
+</section>
+
+
+
+<!-- BUDGET SECTION -->
+
+<section class="budget-section">
+
+<h2>Built Around Your Budget</h2>
+
+<p class="budget-sub">
+
+Flavor doesn’t have to be expensive. Simple ingredients,
+thoughtful cooking, and meals that feel special —
+without stretching your grocery bill.
+
+</p>
+
+
+<div class="budget-boxes">
+
+<div class="budget-card">
+<h3>Big comfort</h3>
+<p>Simple ingredients.</p>
+</div>
+
+<div class="budget-card">
+<h3>Flexible recipes</h3>
+<p>Cook with what you have.</p>
+</div>
+
+<div class="budget-card">
+<h3>Smart planning</h3>
+<p>Less waste, more flavor.</p>
+</div>
+
+</div>
+
+</section>
+
+
+
+</main>
+
+
+
+<footer class="site-footer">
+
+<p>© 2026 Shihan's Kitchen</p>
+
+</footer>
+
+
+
+<script>
+
+const heroWrapper = document.querySelector(".hero-wrapper");
+
+if(heroWrapper){
+
+window.addEventListener("scroll", function(){
+
+const triggerPoint = window.innerHeight * 0.7;
+
+if(window.scrollY > triggerPoint){
+
+heroWrapper.classList.add("active");
+
+}else{
+
+heroWrapper.classList.remove("active");
+
+}
+
+});
+
+}
+
+</script>
+
+
+</body>
+</html>
