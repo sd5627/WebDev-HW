@@ -1,0 +1,136 @@
+# Midterm Project – Recipe Website
+
+## Project Overview
+
+This project is a recipe website focused on Chinese food and 
+Chinese–Western fusion comfort meals. The goal of the site is 
+to create a warm and welcoming space for Chinese people living 
+abroad who may miss the feeling of home.
+
+Food is often strongly connected to memory and emotion. Many 
+Chinese students or workers living overseas do not always have 
+easy access to home-style meals, so this website collects simple 
+recipes that are approachable and comforting. The design of the 
+site aims to feel warm, friendly, and home-like rather than overly 
+formal.
+
+The website currently includes several recipe pages, images of the 
+dishes, ingredients lists, and step-by-step cooking instructions.
+
+---
+
+## Demo of the Site
+
+During the demo I will show the main pages of the website, including 
+the homepage and several recipe pages. The navigation bar allows users 
+to move between the Home, Recipe, and About sections of the site.
+
+Each recipe page includes:
+
+* Images of the dish
+* Ingredients
+* Cooking instructions
+* A clean layout that is easy to read
+
+I will also demonstrate how the layout responds when the browser window is 
+resized. When the screen becomes smaller, the layout adjusts so that images 
+and text stack vertically. This makes the site easier to read on phones.
+
+---
+
+## Code Snippet
+
+1. Responsive Layout Fix (Mobile Optimization)
+
+@media (max-width: 768px){
+  .recipe-content{
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .ingredients,
+  .directions{
+    width: 100%;
+  }
+}
+
+Explanation:
+While building my recipe detail pages, I noticed that the ingredients and 
+directions sections were overflowing on smaller screens. This was caused by using
+a horizontal flex layout with fixed widths.
+To solve this, I changed the layout to a vertical column on mobile devices and 
+allowed both sections to take full width. This prevented horizontal scrolling and
+improved readability.
+
+2. CSS Variables for Design Consistency
+
+:root{
+  --c-primary:#DC143C;
+  --c-bg:#ffffff;
+  --c-text:#222;
+  --c-muted:#666;
+}
+
+Explanation:
+In class, we learned how to use CSS variables, but I expanded this concept into 
+a more consistent design system. Instead of repeating color values throughout my 
+CSS, I defined reusable variables and applied them across multiple components.
+This made the code more maintainable and ensured visual consistency across 
+different pages.
+
+3. Responsive Navigation Adjustment
+
+@media (max-width: 768px){
+  .category-nav {
+    justify-content: space-between;
+    gap: 6px;
+  }
+
+  .category-nav a {
+    flex: 1;
+    text-align: center;
+    font-size: 11px;
+  }
+}
+
+Explanation:
+I adjusted the navigation layout for mobile screens so that all category buttons 
+stay on a single row. By using flex: 1, each button automatically takes equal 
+width, and reducing the font size prevents overflow.
+This improves usability on smaller devices and keeps the interface clean and
+organized.
+
+Reflection
+
+These snippets show how I applied concepts from class—such as media queries and 
+CSS variables—to solve real design problems.
+Instead of only using basic layouts, I adapted my design for different screen 
+sizes and improved the overall user experience. In particular, I focused on 
+preventing layout overflow and maintaining consistency across components.
+
+
+---
+## Media Query
+
+I used mobile as my media Query
+
+@media (max-width: 768px)
+
+On mobile:
+*Layout switches to single column
+*Navigation becomes compact and stays on one row 
+*Font sizes and spacing are reduced for usability
+
+
+---
+## Next Steps
+
+If I had more time, I would continue improving both the functionality and user experience of the site.
+
+One improvement would be adding interactive filtering or search functionality, so users can quickly find recipes instead of scrolling through categories.
+
+I would also enhance the design by adding more micro-interactions and animations, such as smoother transitions between pages or hover effects for images.
+
+Another potential improvement would be improving accessibility, including better color contrast, semantic HTML structure, and support for screen readers.
+
+Finally, I would continue expanding the site by adding more recipes and possibly organizing them with tags or difficulty levels to make the content more structured and user-friendly.
