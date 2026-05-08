@@ -123,7 +123,12 @@ header a {
   /* change the flex direction in the menu to stack our links */
   .menu {
     flex-direction: column;
+    /* Hidden by default, need to add a class to make it show via js */
     display: none;
+  }
+
+  .show {
+    display: block;
   }
 
   .menu li {

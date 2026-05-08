@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Croissant Egg Breakfast</title>
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body 
+  data-name="Croissant Egg Breakfast"
+  data-image="../images/croissant_egg_1.jpg"
+  data-link="../recipes/croissant_egg.html">
+
+<header class="detail-header">
+
+  <!-- back button -->
+  <a href="#" class="back-btn" onclick="goBack()">← Back</a>
+
+  <!-- favorite button -->
+  <button id="favBtn" class="fav-btn" onclick="toggleFavorite()">
+    <span id="favText">Favorite</span>
+  </button>
+
+</header>
+
+<main class="page">
+
+<div class="recipe-card">
+
+<div class="recipe-gallery-top">
+<img src="../images/croissant_egg_1.jpg" alt="Croissant egg breakfast">
+<img src="../images/croissant_egg_2.jpg" alt="Croissant egg breakfast">
+<img src="../images/croissant_egg_3.jpg" alt="Croissant egg breakfast">
+</div>
+
+<h2>Croissant Egg Breakfast</h2>
+
+<p class="description">
+Buttery croissant with a soft egg, served with shrimp and fresh fruit.
+</p>
+
+<div class="recipe-meta">
+
+<div class="meta-box">
+Servings <span>1</span>
+</div>
+
+<div class="meta-box">
+Prep <span>10 mins</span>
+</div>
+
+<div class="meta-box">
+Cook <span>10 mins</span>
+</div>
+
+</div>
+
+<div class="recipe-content">
+
+<div class="box ingredients">
+<h3>Ingredients</h3>
+<ul>
+<li>Croissant</li>
+<li>Egg</li>
+<li>Bacon</li>
+<li>Cheese</li>
+<li>Shrimp</li>
+<li>Avocado</li>
+<li>Blueberries</li>
+<li>Strawberries</li>
+<li>Salt and pepper</li>
+<li>Butter or oil</li>
+</ul>
+</div>
+
+<div class="box directions">
+<h3>Directions</h3>
+<ol>
+<li>Slice the croissant open.</li>
+<li>Add cheese inside.</li>
+<li>Crack an egg in the center.</li>
+<li>Wrap with bacon.</li>
+<li>Bake or air fry until cooked.</li>
+<li>Cook shrimp until pink.</li>
+<li>Prepare avocado and fruit.</li>
+<li>Plate and serve.</li>
+</ol>
+</div>
+
+</div>
+
+</div>
+
+</main>
+
+<footer class="site-footer">
+© 2026 Shihan's Kitchen
+</footer>
+
+<script>
+
+// get recipe info from page
+function getCurrentRecipe(){
+  return {
+    name: document.body.dataset.name,
+    image: document.body.dataset.image,
+    link: document.body.dataset.link
+  };
+}
+
+// add or remove from favorites
+function toggleFavorite(){
+
+  let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+  let recipe = getCurrentRecipe();
+
+  let btn = document.getElementById("favBtn");
+  let text = document.getElementById("favText");
+
+  let index = favorites.findIndex(item => item.name === recipe.name);
+
+  if(index !== -1){
+    favorites.splice(index, 1);
+    text.innerText = "Favorite";
+    btn.classList.remove("saved");
+  } else {
+    favorites.push(recipe);
+    text.innerText = "Saved";
+    btn.classList.add("saved");
+  }
+
+  localStorage.setItem("favorites", JSON.stringify(favorites));
+}
+
+// set button state on load
+document.addEventListener("DOMContentLoaded", function(){
+
+  let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+  let recipe = getCurrentRecipe();
+
+  let btn = document.getElementById("favBtn");
+  let text = document.getElementById("favText");
+
+  if(favorites.find(item => item.name === recipe.name)){
+    text.innerText = "Saved";
+    btn.classList.add("saved");
+  }
+});
+
+// back navigation
+function goBack(){
+  let params = new URLSearchParams(window.location.search);
+
+  if(params.get("from") === "favorites"){
+    window.location.href = "../favorites.html";
+  } else {
+    window.location.href = "../recipes.html";
+  }
+}
+
+</script>
+
+</body>
+</html>

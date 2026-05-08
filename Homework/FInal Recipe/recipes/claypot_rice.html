@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chinese Sausage Claypot Rice</title>
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body 
+  data-name="Chinese Sausage Claypot Rice"
+  data-image="../images/claypot_rice_1.jpg"
+  data-link="../recipes/claypot_rice.html">
+
+<header class="detail-header">
+
+  <!-- back button -->
+  <a href="#" class="back-btn" onclick="goBack()">← Back</a>
+
+  <!-- favorite button -->
+  <button id="favBtn" class="fav-btn" onclick="toggleFavorite()">
+    <span id="favText">Favorite</span>
+  </button>
+
+</header>
+
+<main class="page">
+
+<div class="recipe-card">
+
+<div class="recipe-gallery-top">
+<img src="../images/claypot_rice_1.jpg" alt="Claypot rice">
+<img src="../images/claypot_rice_2.jpg" alt="Claypot rice">
+<img src="../images/claypot_rice_3.jpg" alt="Claypot rice">
+</div>
+
+<h2>Chinese Sausage Claypot Rice</h2>
+
+<p class="description">
+Fragrant rice cooked with Chinese sausage, cured pork, and a soft egg.
+</p>
+
+<div class="recipe-meta">
+
+<div class="meta-box">
+Servings <span>1–2</span>
+</div>
+
+<div class="meta-box">
+Prep <span>30 mins</span>
+</div>
+
+<div class="meta-box">
+Cook <span>25 mins</span>
+</div>
+
+</div>
+
+<div class="recipe-content">
+
+<div class="box ingredients">
+<h3>Ingredients</h3>
+<ul>
+<li>Rice (soaked)</li>
+<li>Chinese sausage</li>
+<li>Cured pork</li>
+<li>Egg</li>
+<li>Vegetables</li>
+<li>Ginger</li>
+<li>Scallions</li>
+<li>Soy sauce</li>
+<li>Dark soy sauce</li>
+<li>Oyster sauce</li>
+<li>Sesame oil</li>
+<li>Sugar</li>
+</ul>
+</div>
+
+<div class="box directions">
+<h3>Directions</h3>
+<ol>
+<li>Soak rice for 30 minutes.</li>
+<li>Add rice and water to a pot.</li>
+<li>Cook until boiling, then lower heat.</li>
+<li>Add sausage, pork, and ginger.</li>
+<li>Crack an egg in the center.</li>
+<li>Cover and cook on low heat.</li>
+<li>Mix sauce ingredients.</li>
+<li>Pour sauce over rice.</li>
+<li>Add vegetables and scallions.</li>
+<li>Serve hot.</li>
+</ol>
+</div>
+
+</div>
+
+</div>
+
+</main>
+
+<footer class="site-footer">
+© 2026 Shihan's Kitchen
+</footer>
+
+<script>
+
+// get recipe info from page
+function getCurrentRecipe(){
+  return {
+    name: document.body.dataset.name,
+    image: document.body.dataset.image,
+    link: document.body.dataset.link
+  };
+}
+
+// add or remove from favorites
+function toggleFavorite(){
+
+  let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+  let recipe = getCurrentRecipe();
+
+  let btn = document.getElementById("favBtn");
+  let text = document.getElementById("favText");
+
+  let index = favorites.findIndex(item => item.name === recipe.name);
+
+  if(index !== -1){
+    favorites.splice(index, 1);
+    text.innerText = "Favorite";
+    btn.classList.remove("saved");
+  } else {
+    favorites.push(recipe);
+    text.innerText = "Saved";
+    btn.classList.add("saved");
+  }
+
+  localStorage.setItem("favorites", JSON.stringify(favorites));
+}
+
+// set button state on load
+document.addEventListener("DOMContentLoaded", function(){
+
+  let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+  let recipe = getCurrentRecipe();
+
+  let btn = document.getElementById("favBtn");
+  let text = document.getElementById("favText");
+
+  if(favorites.find(item => item.name === recipe.name)){
+    text.innerText = "Saved";
+    btn.classList.add("saved");
+  }
+});
+
+// back navigation
+function goBack(){
+  let params = new URLSearchParams(window.location.search);
+
+  if(params.get("from") === "favorites"){
+    window.location.href = "../favorites.html";
+  } else {
+    window.location.href = "../recipes.html";
+  }
+}
+
+</script>
+
+</body>
+</html>

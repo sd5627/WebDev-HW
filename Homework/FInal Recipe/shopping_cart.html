@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Shopping Cart</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="cart-page">
+
+<a href="profile.html" class="back-btn">← Back</a>
+
+<h2 style="text-align:center;">🛒 Your Cart</h2>
+
+<div id="cartList" class="favorites-grid"></div>
+
+<script>
+
+
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+
+cart = cart.filter(item => item && item.name && item.image);
+
+let list = document.getElementById("cartList");
+list.innerHTML = "";
+
+
+cart.forEach(item => {
+
+  let card = document.createElement("div");
+  card.className = "recipe-item";
+
+  card.innerHTML = `
+    <div onclick="goDetail('${item.name}')">
+      <img src="${item.image}" style="width:100px;border-radius:12px">
+
+      <h3>${item.name}</h3>
+      <p>${item.cname || ""}</p>
+
+      <p style="font-weight:bold;">$${item.price}</p>
+    </div>
+
+    <div style="margin-top:10px;">
+      <button onclick="changeQty('${item.name}', -1)">−</button>
+      <span style="margin:0 10px;">${item.qty}</span>
+      <button onclick="changeQty('${item.name}', 1)">+</button>
+    </div>
+  `;
+
+  list.appendChild(card);
+});
+
+
+
+function changeQty(name, delta){
+
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+  let item = cart.find(i => i.name === name);
+
+  if(!item) return;
+
+  item.qty += delta;
+
+
+  if(item.qty <= 0){
+    cart = cart.filter(i => i.name !== name);
+  }
+
+  localStorage.setItem("cart", JSON.stringify(cart));
+
+  location.reload();
+}
+
+
+function goDetail(name){
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  let item = cart.find(i => i.name === name);
+
+  if(item && item.page){
+    window.location.href = item.page + "?from=cart";
+  }
+
+
+}
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yuxiang Eggplant Claypot</title>
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body 
+  data-name="Yuxiang Eggplant Claypot"
+  data-image="../images/yuxiang_eggplant_1.jpg"
+  data-link="../recipes/yuxiang_eggplant.html">
+
+<header class="detail-header">
+
+  <!-- back button -->
+  <a href="#" class="back-btn" onclick="goBack()">← Back</a>
+
+  <!-- favorite button -->
+  <button id="favBtn" class="fav-btn" onclick="toggleFavorite()">
+    <span id="favText">Favorite</span>
+  </button>
+
+</header>
+
+<main class="page">
+
+<div class="recipe-card">
+
+<div class="recipe-gallery-top">
+<img src="../images/yuxiang_eggplant_1.jpg" alt="Yuxiang eggplant claypot">
+<img src="../images/yuxiang_eggplant_2.jpg" alt="Yuxiang eggplant claypot">
+<img src="../images/yuxiang_eggplant_3.jpg" alt="Yuxiang eggplant claypot">
+</div>
+
+<h2>Yuxiang Eggplant Claypot</h2>
+
+<p class="description">
+Eggplant in a savory garlic sauce with minced pork.
+</p>
+
+<div class="recipe-meta">
+
+<div class="meta-box">
+Servings <span>2</span>
+</div>
+
+<div class="meta-box">
+Prep <span>15 mins</span>
+</div>
+
+<div class="meta-box">
+Cook <span>20 mins</span>
+</div>
+
+</div>
+
+<div class="recipe-content">
+
+<div class="box ingredients">
+<h3>Ingredients</h3>
+<ul>
+<li>Eggplant</li>
+<li>Ground pork</li>
+<li>Garlic</li>
+<li>Ginger</li>
+<li>Scallions</li>
+<li>Soy sauce</li>
+<li>Dark soy sauce</li>
+<li>Oyster sauce</li>
+<li>Sugar</li>
+<li>Vinegar</li>
+<li>Cooking wine</li>
+<li>Water or stock</li>
+<li>Cornstarch</li>
+<li>Oil</li>
+</ul>
+</div>
+
+<div class="box directions">
+<h3>Directions</h3>
+<ol>
+<li>Prepare and soak eggplant.</li>
+<li>Cook eggplant until soft.</li>
+<li>Sauté garlic and ginger.</li>
+<li>Add pork and cook.</li>
+<li>Add seasonings and liquid.</li>
+<li>Add eggplant and mix.</li>
+<li>Thicken sauce.</li>
+<li>Simmer and serve.</li>
+</ol>
+</div>
+
+</div>
+
+</div>
+
+</main>
+
+<footer class="site-footer">
+© 2026 Shihan's Kitchen
+</footer>
+
+<script>
+
+// get recipe info from page
+function getCurrentRecipe(){
+  return {
+    name: document.body.dataset.name,
+    image: document.body.dataset.image,
+    link: document.body.dataset.link
+  };
+}
+
+// add or remove from favorites
+function toggleFavorite(){
+
+  let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+  let recipe = getCurrentRecipe();
+
+  let btn = document.getElementById("favBtn");
+  let text = document.getElementById("favText");
+
+  let index = favorites.findIndex(item => item.name === recipe.name);
+
+  if(index !== -1){
+    favorites.splice(index, 1);
+    text.innerText = "Favorite";
+    btn.classList.remove("saved");
+  } else {
+    favorites.push(recipe);
+    text.innerText = "Saved";
+    btn.classList.add("saved");
+  }
+
+  localStorage.setItem("favorites", JSON.stringify(favorites));
+}
+
+// set button state on load
+document.addEventListener("DOMContentLoaded", function(){
+
+  let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+  let recipe = getCurrentRecipe();
+
+  let btn = document.getElementById("favBtn");
+  let text = document.getElementById("favText");
+
+  if(favorites.find(item => item.name === recipe.name)){
+    text.innerText = "Saved";
+    btn.classList.add("saved");
+  }
+});
+
+// back navigation
+function goBack(){
+  let params = new URLSearchParams(window.location.search);
+
+  if(params.get("from") === "favorites"){
+    window.location.href = "../favorites.html";
+  } else {
+    window.location.href = "../recipes.html";
+  }
+}
+
+</script>
+
+</body>
+</html>

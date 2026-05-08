@@ -121,6 +121,10 @@ header a {
         flex-direction: column;
     }
 
+    .show {
+        display: block;
+    }
+
     .menu li {
         border-bottom: 1px solid rgba(255,255,255,0.4);
     }

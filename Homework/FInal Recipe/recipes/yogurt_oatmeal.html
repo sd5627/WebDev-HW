@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yogurt Oatmeal</title>
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body 
+  data-name="Yogurt Oatmeal"
+  data-image="../images/yogurt_oatmeal_1.jpg"
+  data-link="../recipes/yogurt_oatmeal.html">
+
+<header class="detail-header">
+
+  <!-- back button -->
+  <a href="#" class="back-btn" onclick="goBack()">← Back</a>
+
+  <!-- favorite button -->
+  <button id="favBtn" class="fav-btn" onclick="toggleFavorite()">
+    <span id="favText">Favorite</span>
+  </button>
+
+</header>
+
+<main class="page">
+
+<div class="recipe-card">
+
+<div class="recipe-gallery-top">
+<img src="../images/yogurt_oatmeal_1.jpg" alt="Yogurt oatmeal">
+<img src="../images/yogurt_oatmeal_2.jpg" alt="Yogurt oatmeal">
+<img src="../images/yogurt_oatmeal_3.jpg" alt="Yogurt oatmeal">
+</div>
+
+<h2>Yogurt Oatmeal</h2>
+
+<p class="description">
+A refreshing mix of yogurt, oats, and fresh fruit.
+</p>
+
+<div class="recipe-meta">
+
+<div class="meta-box">
+Servings <span>1</span>
+</div>
+
+<div class="meta-box">
+Prep <span>10 mins</span>
+</div>
+
+<div class="meta-box">
+Cook <span>0 mins</span>
+</div>
+
+</div>
+
+<div class="recipe-content">
+
+<div class="box ingredients">
+<h3>Ingredients</h3>
+<ul>
+<li>Yogurt</li>
+<li>Oats</li>
+<li>Strawberries</li>
+<li>Blueberries</li>
+<li>Banana</li>
+<li>Honey</li>
+<li>Nuts</li>
+</ul>
+</div>
+
+<div class="box directions">
+<h3>Directions</h3>
+<ol>
+<li>Add oats to a bowl.</li>
+<li>Pour yogurt over oats.</li>
+<li>Add fruit on top.</li>
+<li>Drizzle honey.</li>
+<li>Add nuts and serve.</li>
+</ol>
+</div>
+
+</div>
+
+</div>
+
+</main>
+
+<footer class="site-footer">
+© 2026 Shihan's Kitchen
+</footer>
+
+<script>
+
+// get recipe info from page
+function getCurrentRecipe(){
+  return {
+    name: document.body.dataset.name,
+    image: document.body.dataset.image,
+    link: document.body.dataset.link
+  };
+}
+
+// add or remove from favorites
+function toggleFavorite(){
+
+  let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+  let recipe = getCurrentRecipe();
+
+  let btn = document.getElementById("favBtn");
+  let text = document.getElementById("favText");
+
+  let index = favorites.findIndex(item => item.name === recipe.name);
+
+  if(index !== -1){
+    favorites.splice(index, 1);
+    text.innerText = "Favorite";
+    btn.classList.remove("saved");
+  } else {
+    favorites.push(recipe);
+    text.innerText = "Saved";
+    btn.classList.add("saved");
+  }
+
+  localStorage.setItem("favorites", JSON.stringify(favorites));
+}
+
+// set button state on load
+document.addEventListener("DOMContentLoaded", function(){
+
+  let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+  let recipe = getCurrentRecipe();
+
+  let btn = document.getElementById("favBtn");
+  let text = document.getElementById("favText");
+
+  if(favorites.find(item => item.name === recipe.name)){
+    text.innerText = "Saved";
+    btn.classList.add("saved");
+  }
+});
+
+// back navigation
+function goBack(){
+  let params = new URLSearchParams(window.location.search);
+
+  if(params.get("from") === "favorites"){
+    window.location.href = "../favorites.html";
+  } else {
+    window.location.href = "../recipes.html";
+  }
+}
+
+</script>
+
+</body>
+</html>

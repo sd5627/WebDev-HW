@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Enoki Mushroom</title>
+<link rel="stylesheet" href="../styles.css">
+
+<style>
+
+.product-page{
+  padding: 30px;
+}
+
+.product-gallery{
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+}
+
+.product-gallery img{
+  width: 260px;
+  height: 260px;
+  object-fit: cover;
+  border-radius: 16px;
+}
+
+.product-title{
+  font-size: 22px;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+.product-sub{
+  color: gray;
+  margin-bottom: 15px;
+}
+
+.price-big{
+  font-size: 28px;
+  color: #e60023;
+  font-weight: bold;
+}
+
+.add-cart-btn{
+  margin-top: 20px;
+  width: 100%;
+  padding: 14px;
+  border-radius: 30px;
+  border: none;
+  background: #6495ed;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.summary{
+  margin-top: 25px;
+}
+
+.summary p{
+  margin: 6px 0;
+}
+
+</style>
+</head>
+
+<body>
+
+<header class="detail-header">
+<a href="#" onclick="goBack()" class="back-btn">← Back</a>
+</header>
+<main class="product-page">
+
+
+<div class="product-gallery">
+  <img src="../hotpot/enoki_1.jpg">
+  <img src="../hotpot/enoki_2.jpg">
+  <img src="../hotpot/enoki_1.jpg">
+</div>
+
+
+<div class="product-title">
+Enoki Mushroom
+</div>
+
+<div class="product-sub">
+金针菇 · Delicate texture · Essential for hot pot
+</div>
+
+
+<div class="price-big">
+$1.28
+</div>
+
+
+<button class="add-cart-btn"
+onclick="addToCart('Enoki Mushroom','金针菇','../hotpot/enoki_1.jpg',1.28)">
+Add to Cart
+</button>
+
+
+<div class="summary">
+  <h3>Product Summary</h3>
+  <p>• Light and delicate texture</p>
+  <p>• Absorbs soup flavors perfectly</p>
+  <p>• Must-have for hot pot</p>
+</div>
+
+</main>
+
+<footer class="site-footer">
+© 2026 Shihan's Kitchen
+</footer>
+
+<script>
+function addToCart(name, cname, image, price){
+
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+  let existing = cart.find(item => item.name === name);
+
+  if(existing){
+    existing.qty += 1;
+  } else {
+    cart.push({
+      name,
+      cname,
+      image,
+      price,
+      qty: 1
+    });
+  }
+
+  localStorage.setItem("cart", JSON.stringify(cart));
+
+  alert("Added to cart 🛒");
+}
+function goBack(){
+  const params = new URLSearchParams(window.location.search);
+  const from = params.get("from");
+
+  if(from === "cart"){
+    window.location.href = "../shopping_cart.html";
+  } else {
+    window.location.href = "../hotpot.html";
+  }
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pesto Rotini with Poached Egg</title>
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body 
+  data-name="Pesto Rotini with Poached Egg"
+  data-image="../images/pesto rotini_1.jpg"
+  data-link="../recipes/pesto-rotini.html">
+
+<header class="detail-header">
+
+  <!-- back button -->
+  <a href="#" class="back-btn" onclick="goBack()">← Back</a>
+
+  <!-- favorite button -->
+  <button id="favBtn" class="fav-btn" onclick="toggleFavorite()">
+    <span id="favText">Favorite</span>
+  </button>
+
+</header>
+
+<main class="page">
+
+<div class="recipe-card">
+
+<div class="recipe-gallery-top">
+<img src="../images/pesto rotini_1.jpg" alt="Pesto rotini pasta">
+<img src="../images/pesto rotini_2.jpg" alt="Pesto rotini pasta">
+<img src="../images/pesto rotini_3.jpg" alt="Pesto rotini pasta">
+</div>
+
+<h2>Pesto Rotini with Poached Egg</h2>
+
+<p class="description">
+Rotini pasta with basil pesto, topped with a soft poached egg.
+</p>
+
+<div class="recipe-meta">
+
+<div class="meta-box">
+Servings <span>1</span>
+</div>
+
+<div class="meta-box">
+Prep <span>10 mins</span>
+</div>
+
+<div class="meta-box">
+Cook <span>10 mins</span>
+</div>
+
+</div>
+
+<div class="recipe-content">
+
+<div class="box ingredients">
+<h3>Ingredients</h3>
+<ul>
+<li>Rotini pasta</li>
+<li>Egg</li>
+<li>Tomatoes</li>
+<li>Parmesan cheese</li>
+<li>Basil</li>
+<li>Arugula</li>
+<li>Pine nuts</li>
+<li>Garlic</li>
+<li>Olive oil</li>
+<li>Salt</li>
+<li>Black pepper</li>
+</ul>
+</div>
+
+<div class="box directions">
+<h3>Directions</h3>
+<ol>
+<li>Blanch basil and cool.</li>
+<li>Blend pesto ingredients.</li>
+<li>Cook pasta and toss with pesto.</li>
+<li>Prepare poached egg.</li>
+<li>Assemble and garnish.</li>
+</ol>
+</div>
+
+</div>
+
+</div>
+
+</main>
+
+<footer class="site-footer">
+© 2026 Shihan's Kitchen
+</footer>
+
+<script>
+
+// get recipe info from page
+function getCurrentRecipe(){
+  return {
+    name: document.body.dataset.name,
+    image: document.body.dataset.image,
+    link: document.body.dataset.link
+  };
+}
+
+// add or remove from favorites
+function toggleFavorite(){
+
+  let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+  let recipe = getCurrentRecipe();
+
+  let btn = document.getElementById("favBtn");
+  let text = document.getElementById("favText");
+
+  let index = favorites.findIndex(item => item.name === recipe.name);
+
+  if(index !== -1){
+    favorites.splice(index, 1);
+    text.innerText = "Favorite";
+    btn.classList.remove("saved");
+  } else {
+    favorites.push(recipe);
+    text.innerText = "Saved";
+    btn.classList.add("saved");
+  }
+
+  localStorage.setItem("favorites", JSON.stringify(favorites));
+}
+
+// set button state on load
+document.addEventListener("DOMContentLoaded", function(){
+
+  let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+  let recipe = getCurrentRecipe();
+
+  let btn = document.getElementById("favBtn");
+  let text = document.getElementById("favText");
+
+  if(favorites.find(item => item.name === recipe.name)){
+    text.innerText = "Saved";
+    btn.classList.add("saved");
+  }
+});
+
+// back navigation
+function goBack(){
+  let params = new URLSearchParams(window.location.search);
+
+  if(params.get("from") === "favorites"){
+    window.location.href = "../favorites.html";
+  } else {
+    window.location.href = "../recipes.html";
+  }
+}
+
+</script>
+
+</body>
+</html>

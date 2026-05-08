@@ -1,0 +1,114 @@
+Final Project
+
+##Project Overview
+
+This project is a recipe website that allows 
+users to explore different dishes, view detailed 
+recipes, and save their favorite items. The goal of 
+this project is to create an engaging and user-friendly
+cooking experience that combines visual design with 
+interactive functionality.
+
+## Live Site
+
+[View Website] (http://127.0.0.1:5500/index.html)
+
+## Documentation
+
+[View Process Documentation](https://docs.google.com/document/d/1wO_hxI2PFABPzPfGEEZOTJA6QsPaNefMu1syASDbQNM/edit?usp=sharing)
+
+## Features
+
+* Sign in page
+* Avatar appears after user signed in
+* Drop down menue by clicking on the avatar
+* View detailed recipe pages
+* Add/remove favorites using localStorage
+* Favorites page
+* Shopping cart page
+* Profile page
+* Hotpot session
+* Buy things there
+
+## Technologies Used
+
+* HTML
+* CSS
+* JavaScript (localStorage, DOM manipulation)
+
+## Challenges
+
+One major challenge was managing navigation between 
+pages, especially when using the back button. The 
+browser history sometimes redirected users to 
+unexpected pages. 
+
+Another challenge was implementing the favorites 
+system using localStorage and ensuring data consistency
+across pages.
+
+## What I Learned
+
+* How to use localStorage to store user data
+1. How to store recipe cards into favorites
+
+// Retrieve existing favorites from localStorage
+// If no data exists yet, initialize an empty array
+let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+
+
+// Function to add a recipe item into favorites
+function addToFavorites(item){
+
+// Check if the item already exists in favorites
+// This prevents duplicate entries
+let exists = favorites.some(fav => fav.name === item.name);
+
+if(!exists){
+// Add the new item into the array
+favorites.push(item);
+
+// Convert the array into a string and store it in localStorage
+localStorage.setItem("favorites", JSON.stringify(favorites));
+
+    alert("Added to favorites!");
+  } else {
+    alert("Already in favorites!");
+  }
+}
+
+<!-- Button connected to each recipe card -->
+<!-- When clicked, it sends an object containing recipe data -->
+<button onclick="addToFavorites({
+  name: 'Basque Cheesecake',
+  page: 'basque.html',
+  image: 'images/basque.jpg'
+})">
+  Add to Favorites
+</button>
+
+--> How to store arrays in local storage?
+// The structure of the data I am storing:
+// An array of objects, where each object represents a recipe
+favorites = [
+  {
+    name: "Basque Cheesecake",
+    page: "basque.html",
+    image: "images/basque.jpg"
+  }
+]
+
+/// When storing the data:
+// localStorage only supports strings,
+// so I convert the array into a JSON string
+localStorage.setItem("favorites", JSON.stringify(favorites));
+
+
+## Next Steps
+
+* Finish up the About page
+* Improve mobile responsiveness
+* Add payment method interface
+* Add more recipe cards
+* Add search bar
+* Add more stuffs into the Profile page

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>British Big Breakfast</title>
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body 
+  data-name="British Big Breakfast"
+  data-image="../images/british big breakfast_1.jpg"
+  data-link="../recipes/british_big_breakfast.html">
+
+<header class="detail-header">
+
+  <!-- back button -->
+  <a href="#" class="back-btn" onclick="goBack()">← Back</a>
+
+  <!-- favorite button -->
+  <button id="favBtn" class="fav-btn" onclick="toggleFavorite()">
+    <span id="favText">Favorite</span>
+  </button>
+
+</header>
+
+<main class="page">
+
+<div class="recipe-card">
+
+<div class="recipe-gallery-top">
+<img src="../images/british big breakfast_1.jpg" alt="British breakfast">
+<img src="../images/british big breakfast_2.jpg" alt="British breakfast">
+<img src="../images/british big breakfast_3.jpg" alt="British breakfast">
+</div>
+
+<h2>British Big Breakfast</h2>
+
+<p class="description">
+A hearty English breakfast with eggs, sausage, bacon, and sides.
+</p>
+
+<div class="recipe-meta">
+
+<div class="meta-box">
+Servings <span>1</span>
+</div>
+
+<div class="meta-box">
+Prep <span>15 mins</span>
+</div>
+
+<div class="meta-box">
+Cook <span>10 mins</span>
+</div>
+
+</div>
+
+<div class="recipe-content">
+
+<div class="box ingredients">
+<h3>Ingredients</h3>
+<ul>
+<li>Eggs</li>
+<li>Light cream</li>
+<li>Bread</li>
+<li>Sausages</li>
+<li>Bacon</li>
+<li>Mushrooms</li>
+<li>Tomato</li>
+<li>Avocado</li>
+<li>Baked beans</li>
+<li>Salt</li>
+<li>Black pepper</li>
+<li>Olive oil</li>
+</ul>
+</div>
+
+<div class="box directions">
+<h3>Directions</h3>
+<ol>
+<li>Toast bread in the oven.</li>
+<li>Slice avocado.</li>
+<li>Boil sausages briefly.</li>
+<li>Pan-fry bacon and sausages.</li>
+<li>Cook mushrooms and tomato.</li>
+<li>Make soft scrambled eggs.</li>
+<li>Plate everything and serve.</li>
+</ol>
+</div>
+
+</div>
+
+</div>
+
+</main>
+
+<footer class="site-footer">
+© 2026 Shihan's Kitchen
+</footer>
+
+<script>
+
+// get recipe info from page
+function getCurrentRecipe(){
+  return {
+    name: document.body.dataset.name,
+    image: document.body.dataset.image,
+    link: document.body.dataset.link
+  };
+}
+
+// add or remove from favorites
+function toggleFavorite(){
+
+  let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+  let recipe = getCurrentRecipe();
+
+  let btn = document.getElementById("favBtn");
+  let text = document.getElementById("favText");
+
+  let index = favorites.findIndex(item => item.name === recipe.name);
+
+  if(index !== -1){
+    favorites.splice(index, 1);
+    text.innerText = "Favorite";
+    btn.classList.remove("saved");
+  } else {
+    favorites.push(recipe);
+    text.innerText = "Saved";
+    btn.classList.add("saved");
+  }
+
+  localStorage.setItem("favorites", JSON.stringify(favorites));
+}
+
+// set button state on load
+document.addEventListener("DOMContentLoaded", function(){
+
+  let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+  let recipe = getCurrentRecipe();
+
+  let btn = document.getElementById("favBtn");
+  let text = document.getElementById("favText");
+
+  if(favorites.find(item => item.name === recipe.name)){
+    text.innerText = "Saved";
+    btn.classList.add("saved");
+  }
+});
+
+// back navigation
+function goBack(){
+  let params = new URLSearchParams(window.location.search);
+
+  if(params.get("from") === "favorites"){
+    window.location.href = "../favorites.html";
+  } else {
+    window.location.href = "../recipes.html";
+  }
+}
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+<header class="site-header">
+
+  <div class="logo">
+    <svg viewBox="0 0 600 420" class="brand">
+
+      <defs>
+        <path id="arc"
+              d="M 100 260 A 200 200 0 0 1 500 260"
+              fill="transparent"/>
+      </defs>
+
+      <!-- Shihan's kitchen -->
+      <text class="brand-title">
+        <textPath href="#arc" startOffset="50%" text-anchor="middle">
+          SHIHAN'S KITCHEN
+        </textPath>
+      </text>
+
+      <!-- EST -->
+      <text x="300" y="230" text-anchor="middle" class="brand-sub">
+        EST. 2026
+      </text>
+
+      <!-- Logo shape -->
+      <ellipse cx="260" cy="280" rx="35" ry="18" fill="white"/>
+      <circle cx="300" cy="285" r="10" fill="white"/>
+      <ellipse cx="340" cy="280" rx="35" ry="18" fill="white"/>
+
+    </svg>
+  </div>
+
+<nav class="main-nav">
+
+  <!-- 中间 -->
+  <div class="nav-center">
+    <a href="index.html">Home</a>
+    <a href="recipes.html">Recipes</a>
+    <a href="about.html">About</a>
+  </div>
+
+  <!-- before signed in -->
+  <div class="nav-right" id="auth-buttons">
+    <a href="login.html" class="btn filled">Sign In</a>
+  </div>
+
+  <!-- after signed in -->
+  <div class="nav-right hidden" id="user-menu">
+
+<img src="images/avatar.jpg" class="avatar" onclick="toggleMenu()">
+
+ <div class="dropdown hidden" id="dropdown">
+  <a href="profile.html" id="usernameDisplay" 
+  class="profile-link"></a>
+  <button onclick="logout()">Logout</button>
+</div>
+
+  </div>
+
+</nav>
+
+</header>
+
+
+<main class="page">
+
+  <section class="about-section">
+    <h2>About Shihan's Kitchen</h2>
+
+    <p>
+      Shihan’s Kitchen is a personal recipe collection inspired by
+      traditional Chinese home cooking and simple everyday meals.
+      This site is a space to share comfort food, family favorites,
+      and easy recipes that anyone can recreate.
+    </p>
+
+    <p>
+      Cooking has always been about connection — to culture, to memory,
+      and to the people we share meals with. From classic breakfast
+      dishes like soy milk and scallion pancakes to modern pasta
+      creations, each recipe reflects warmth and simplicity.
+    </p>
+
+    <p>
+      Thank you for visiting and exploring these recipes.
+      I hope they bring joy to your kitchen.
+    </p>
+  </section>
+
+</main>
+
+
+<footer class="site-footer">
+  © 2026 Shihan's Kitchen
+</footer>
+<script>
+window.onload = function(){
+
+  let user = localStorage.getItem("loggedInUser");
+
+  const auth = document.getElementById("auth-buttons");
+  const menu = document.getElementById("user-menu");
+
+  if(user){
+    auth.classList.add("hidden");
+    menu.classList.remove("hidden");
+
+    let name = document.getElementById("usernameDisplay");
+    if(name){
+      name.innerText = user;
+    }
+
+  }else{
+    auth.classList.remove("hidden");
+    menu.classList.add("hidden");
+  }
+
+}
+function toggleMenu(){
+  let drop = document.getElementById("dropdown");
+  if(drop){
+    drop.classList.toggle("hidden");
+  }
+}
+
+function logout(){
+  localStorage.removeItem("loggedInUser");
+  window.location.reload();
+}
+
+
+document.addEventListener("click", function(e){
+  const menu = document.getElementById("user-menu");
+  const dropdown = document.getElementById("dropdown");
+
+  if(menu && dropdown && !menu.contains(e.target)){
+    dropdown.classList.add("hidden");
+  }
+});
+</script>
+
+</body>
+</html>

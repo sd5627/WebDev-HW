@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scallion Pancake</title>
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body 
+  data-name="Scallion Pancake"
+  data-image="../images/scallion-pancake.jpg"
+  data-link="../recipes/scallion-pancake.html">
+
+<header class="detail-header">
+
+  <!-- back button -->
+  <a href="#" class="back-btn" onclick="goBack()">← Back</a>
+
+  <!-- favorite button -->
+  <button id="favBtn" class="fav-btn" onclick="toggleFavorite()">
+    <span id="favText">Favorite</span>
+  </button>
+
+</header>
+
+<main class="page">
+
+<div class="recipe-card">
+
+<div class="recipe-gallery-top">
+<img src="../images/scallion-pancake.jpg" alt="Scallion pancake">
+<img src="../images/scallion-pancake_2.jpg" alt="Scallion pancake">
+<img src="../images/scallion-pancake_3.jpg" alt="Scallion pancake">
+</div>
+
+<h2>Scallion Pancake</h2>
+
+<p class="description">
+Crispy layered flatbread with scallions.
+</p>
+
+<div class="recipe-meta">
+
+<div class="meta-box">
+Servings <span>3</span>
+</div>
+
+<div class="meta-box">
+Prep <span>30 mins</span>
+</div>
+
+<div class="meta-box">
+Cook <span>10 mins</span>
+</div>
+
+</div>
+
+<div class="recipe-content">
+
+<div class="box ingredients">
+<h3>Ingredients</h3>
+<ul>
+<li>Flour</li>
+<li>Hot water</li>
+<li>Scallions</li>
+<li>Salt</li>
+<li>Vegetable oil</li>
+</ul>
+</div>
+
+<div class="box directions">
+<h3>Directions</h3>
+<ol>
+<li>Mix flour with hot water to form dough.</li>
+<li>Knead and rest.</li>
+<li>Divide and roll out.</li>
+<li>Add oil, salt, and scallions.</li>
+<li>Roll and coil into layers.</li>
+<li>Flatten into pancakes.</li>
+<li>Pan-fry until golden and crispy.</li>
+<li>Cut and serve.</li>
+</ol>
+</div>
+
+</div>
+
+</div>
+
+</main>
+
+<footer class="site-footer">
+© 2026 Shihan's Kitchen
+</footer>
+
+<script>
+
+// get recipe info from page
+function getCurrentRecipe(){
+  return {
+    name: document.body.dataset.name,
+    image: document.body.dataset.image,
+    link: document.body.dataset.link
+  };
+}
+
+// add or remove from favorites
+function toggleFavorite(){
+
+  let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+  let recipe = getCurrentRecipe();
+
+  let btn = document.getElementById("favBtn");
+  let text = document.getElementById("favText");
+
+  let index = favorites.findIndex(item => item.name === recipe.name);
+
+  if(index !== -1){
+    favorites.splice(index, 1);
+    text.innerText = "Favorite";
+    btn.classList.remove("saved");
+  } else {
+    favorites.push(recipe);
+    text.innerText = "Saved";
+    btn.classList.add("saved");
+  }
+
+  localStorage.setItem("favorites", JSON.stringify(favorites));
+}
+
+// set button state on load
+document.addEventListener("DOMContentLoaded", function(){
+
+  let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+  let recipe = getCurrentRecipe();
+
+  let btn = document.getElementById("favBtn");
+  let text = document.getElementById("favText");
+
+  if(favorites.find(item => item.name === recipe.name)){
+    text.innerText = "Saved";
+    btn.classList.add("saved");
+  }
+});
+
+// back navigation
+function goBack(){
+  let params = new URLSearchParams(window.location.search);
+
+  if(params.get("from") === "favorites"){
+    window.location.href = "../favorites.html";
+  } else {
+    window.location.href = "../recipes.html";
+  }
+}
+
+</script>
+
+</body>
+</html>

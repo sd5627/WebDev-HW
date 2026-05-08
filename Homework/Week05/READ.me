@@ -72,11 +72,14 @@ improved readability.
 }
 
 Explanation:
-In class, we learned how to use CSS variables, but I expanded this concept into 
-a more consistent design system. Instead of repeating color values throughout my 
-CSS, I defined reusable variables and applied them across multiple components.
-This made the code more maintainable and ensured visual consistency across 
-different pages.
+Instead of writing the same color values again and again in my CSS, I used CSS 
+variables to store them in one place， which was taught by the professor.
+For example, instead of repeatedly writing #DC143C, I defined it as --c-primary
+and reused it across different elements like buttons, headers, and backgrounds.
+This makes the code easier to manage, because if I want to change a color later, 
+I only need to update it once in the :root, and it will automatically update 
+everywhere. It also helps keep the design consistent across different pages.
+
 
 3. Responsive Navigation Adjustment
 
@@ -96,18 +99,42 @@ different pages.
 Explanation:
 I adjusted the navigation layout for mobile screens so that all category buttons 
 stay on a single row. By using flex: 1, each button automatically takes equal 
-width, and reducing the font size prevents overflow.
+width, and reducing the font size prevents overlap.
 This improves usability on smaller devices and keeps the interface clean and
 organized.
 
-Reflection
 
-These snippets show how I applied concepts from class—such as media queries and 
-CSS variables—to solve real design problems.
-Instead of only using basic layouts, I adapted my design for different screen 
-sizes and improved the overall user experience. In particular, I focused on 
-preventing layout overflow and maintaining consistency across components.
+4. Hero and JavaScript
 
+The layout is typically controlled using Flexbox in CSS, allowing the image and 
+text to appear side by side.
+In the JavaScript part, I used:
+
+window.addEventListener("scroll", function () {
+
+to detect when the user scrolls.
+
+A trigger point is calculated using:
+
+const triggerPoint = window.innerHeight * 0.7;
+
+This means the animation will start when the user scrolls past 70% of the 
+viewport height.
+
+When this condition is met:
+
+heroWrapper.classList.add("active");
+
+an "active" class is added, which activates a CSS animation (such as fade-in 
+and upward movement).
+If the user scrolls back up, the class is removed, making the interaction 
+reversible.
+
+Explanation: 
+This hero section uses a flex layout to combine an image and text, and a 
+scroll-triggered animation is applied using JavaScript. When the user scrolls 
+past 70% of the viewport height, an "active" class is added, triggering a smooth 
+fade-in and upward motion defined in CSS.
 
 ---
 ## Media Query
@@ -125,12 +152,15 @@ On mobile:
 ---
 ## Next Steps
 
-If I had more time, I would continue improving both the functionality and user experience of the site.
-
-One improvement would be adding interactive filtering or search functionality, so users can quickly find recipes instead of scrolling through categories.
-
-I would also enhance the design by adding more micro-interactions and animations, such as smoother transitions between pages or hover effects for images.
-
-Another potential improvement would be improving accessibility, including better color contrast, semantic HTML structure, and support for screen readers.
-
-Finally, I would continue expanding the site by adding more recipes and possibly organizing them with tags or difficulty levels to make the content more structured and user-friendly.
+If I had more time, I would continue improving both the functionality and user 
+experience of the site.
+One improvement would be adding interactive filtering or search functionality, 
+so users can quickly find recipes instead of scrolling through categories.
+I would also enhance the design by adding more micro-interactions and animations,
+such as smoother transitions between pages or hover effects for images.
+Another potential improvement would be adding more staff in the About page. I 
+might add more about my personal experiences in cooking dishes and some photos as 
+well.
+Finally, I would continue expanding the site by adding more recipes and possibly 
+organizing them with tags or difficulty levels to make the content more structured 
+and user-friendly.

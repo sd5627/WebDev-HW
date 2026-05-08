@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Braised Chicken with Mushrooms</title>
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body 
+  data-name="Braised Chicken with Mushrooms"
+  data-image="../images/braised_chicken_mushroom_1.jpg"
+  data-link="../recipes/braised_chicken_mushroom.html">
+
+<header class="detail-header">
+
+  <!-- back button -->
+  <a href="#" class="back-btn" onclick="goBack()">← Back</a>
+
+  <!-- favorite button -->
+  <button id="favBtn" class="fav-btn" onclick="toggleFavorite()">
+    <span id="favText">Favorite</span>
+  </button>
+
+</header>
+
+<main class="page">
+
+<div class="recipe-card">
+
+<div class="recipe-gallery-top">
+<img src="../images/braised_chicken_mushroom_1.jpg" alt="Braised chicken with mushrooms">
+<img src="../images/braised_chicken_mushroom_2.jpg" alt="Braised chicken with mushrooms">
+<img src="../images/braised_chicken_mushroom_3.jpg" alt="Braised chicken with mushrooms">
+</div>
+
+<h2>Braised Chicken with Mushrooms</h2>
+
+<p class="description">
+A classic comfort dish with tender chicken and deep mushroom flavor.
+</p>
+
+<div class="recipe-meta">
+
+<div class="meta-box">
+Servings <span>2–3</span>
+</div>
+
+<div class="meta-box">
+Prep <span>20 mins</span>
+</div>
+
+<div class="meta-box">
+Cook <span>60–90 mins</span>
+</div>
+
+</div>
+
+<div class="recipe-content">
+
+<div class="box ingredients">
+<h3>Ingredients</h3>
+<ul>
+<li>Chicken (about 800g)</li>
+<li>Dried mushrooms</li>
+<li>Ginger</li>
+<li>Garlic</li>
+<li>Scallions</li>
+<li>Star anise</li>
+<li>Sichuan peppercorn</li>
+<li>Soy sauce</li>
+<li>Dark soy sauce</li>
+<li>Cooking wine</li>
+<li>Rock sugar</li>
+<li>Salt</li>
+<li>Oil</li>
+</ul>
+</div>
+
+<div class="box directions">
+<h3>Directions</h3>
+<ol>
+<li>Cut chicken and rinse.</li>
+<li>Blanch with ginger and cooking wine.</li>
+<li>Rinse clean.</li>
+<li>Soak mushrooms and reserve liquid.</li>
+<li>Heat oil with spices.</li>
+<li>Add aromatics and stir fry.</li>
+<li>Add chicken and cook until lightly browned.</li>
+<li>Add sauces.</li>
+<li>Add mushrooms.</li>
+<li>Pour in soaking water and hot water.</li>
+<li>Add sugar and bring to boil.</li>
+<li>Simmer for 1–1.5 hours.</li>
+<li>Season and reduce sauce.</li>
+<li>Serve hot.</li>
+</ol>
+</div>
+
+</div>
+
+</div>
+
+</main>
+
+<footer class="site-footer">
+© 2026 Shihan's Kitchen
+</footer>
+
+<script>
+
+// get recipe info from page
+function getCurrentRecipe(){
+  return {
+    name: document.body.dataset.name,
+    image: document.body.dataset.image,
+    link: document.body.dataset.link
+  };
+}
+
+// add or remove from favorites
+function toggleFavorite(){
+
+  let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+  let recipe = getCurrentRecipe();
+
+  let btn = document.getElementById("favBtn");
+  let text = document.getElementById("favText");
+
+  let index = favorites.findIndex(item => item.name === recipe.name);
+
+  if(index !== -1){
+    favorites.splice(index, 1);
+    text.innerText = "Favorite";
+    btn.classList.remove("saved");
+  } else {
+    favorites.push(recipe);
+    text.innerText = "Saved";
+    btn.classList.add("saved");
+  }
+
+  localStorage.setItem("favorites", JSON.stringify(favorites));
+}
+
+// set button state on load
+document.addEventListener("DOMContentLoaded", function(){
+
+  let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+  let recipe = getCurrentRecipe();
+
+  let btn = document.getElementById("favBtn");
+  let text = document.getElementById("favText");
+
+  if(favorites.find(item => item.name === recipe.name)){
+    text.innerText = "Saved";
+    btn.classList.add("saved");
+  }
+});
+
+// back navigation
+function goBack(){
+  let params = new URLSearchParams(window.location.search);
+
+  if(params.get("from") === "favorites"){
+    window.location.href = "../favorites.html";
+  } else {
+    window.location.href = "../recipes.html";
+  }
+}
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Profile</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="profile-page">
+<a href="recipes.html" class="back-btn">← Recipes</a>
+  <!-- top -->
+  <div class="profile-header">
+    <img src="images/avatar.jpg" class="profile-avatar">
+    <h2 id="usernameDisplay"></h2>
+    <p class="bio">Food lover 🍜</p>
+  </div>
+
+  <!-- function -->
+  <div class="profile-actions">
+   <a href="favorites.html">❤️ Favorites</a>
+    <a href="shopping_cart.html">🛒 Shopping Cart</a>
+    
+  </div>
+
+  <!-- information -->
+  <div class="profile-stats">
+    <p id="savedCount"></p>
+    <p id="cartCount"></p>
+    <p>Member since: 2026</p>
+  </div>
+
+<script>
+
+// user login check
+let user = localStorage.getItem("loggedInUser");
+
+if(user){
+  document.getElementById("usernameDisplay").innerText = user;
+}else{
+  window.location.href = "login.html";
+}
+
+// ===== Favorites =====
+let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+
+// filter data
+let validFavorites = favorites.filter(item => 
+  item.name && item.image && item.link
+);
+
+document.getElementById("savedCount").innerText =
+  "Saved recipes: " + validFavorites.length;
+
+
+// ===== Cart =====
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+// prevent null
+let validCart = cart.filter(item => item);
+
+let totalQty = 0;
+
+validCart.forEach(item => {
+  totalQty += item.qty || 1; // prevent old data from having no qty
+});
+
+document.getElementById("cartCount").innerText =
+  "Cart items: " + totalQty;
+
+</script>
+
+</body>
+</html>

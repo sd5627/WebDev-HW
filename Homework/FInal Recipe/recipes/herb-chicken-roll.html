@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Herb Chicken Roll</title>
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body 
+  data-name="Herb Chicken Roll"
+  data-image="../images/herb chicken roll_1.jpg"
+  data-link="../recipes/herb-chicken-roll.html">
+
+<header class="detail-header">
+
+  <!-- back button -->
+  <a href="#" class="back-btn" onclick="goBack()">← Back</a>
+
+  <!-- favorite button -->
+  <button id="favBtn" class="fav-btn" onclick="toggleFavorite()">
+    <span id="favText">Favorite</span>
+  </button>
+
+</header>
+
+<main class="page">
+
+<div class="recipe-card">
+
+<div class="recipe-gallery-top">
+<img src="../images/herb chicken roll_1.jpg" alt="Herb chicken roll">
+<img src="../images/herb chicken roll_2.jpg" alt="Herb chicken roll">
+<img src="../images/herb chicken roll_3.jpg" alt="Herb chicken roll">
+</div>
+
+<h2>Herb Chicken Roll</h2>
+
+<p class="description">
+A light wrap with chicken, vegetables, herbs, and yogurt sauce.
+</p>
+
+<div class="recipe-meta">
+
+<div class="meta-box">
+Servings <span>1–2</span>
+</div>
+
+<div class="meta-box">
+Prep <span>10 mins</span>
+</div>
+
+<div class="meta-box">
+Cook <span>10 mins</span>
+</div>
+
+</div>
+
+<div class="recipe-content">
+
+<div class="box ingredients">
+<h3>Ingredients</h3>
+<ul>
+<li>Tortilla</li>
+<li>Chicken breast</li>
+<li>Yogurt sauce</li>
+<li>Egg yolk sauce</li>
+<li>Herbs</li>
+<li>Lettuce</li>
+<li>Cherry tomatoes</li>
+<li>Onion</li>
+<li>Salt and pepper</li>
+</ul>
+</div>
+
+<div class="box directions">
+<h3>Directions</h3>
+<ol>
+<li>Cook and slice the chicken.</li>
+<li>Mix sauce ingredients.</li>
+<li>Lay out tortilla with lettuce.</li>
+<li>Add chicken and sauce.</li>
+<li>Add vegetables.</li>
+<li>Roll tightly.</li>
+<li>Pan-sear until golden.</li>
+<li>Cut and serve.</li>
+</ol>
+</div>
+
+</div>
+
+</div>
+
+</main>
+
+<footer class="site-footer">
+© 2026 Shihan's Kitchen
+</footer>
+
+<script>
+
+// get recipe info from page
+function getCurrentRecipe(){
+  return {
+    name: document.body.dataset.name,
+    image: document.body.dataset.image,
+    link: document.body.dataset.link
+  };
+}
+
+// add or remove from favorites
+function toggleFavorite(){
+
+  let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+  let recipe = getCurrentRecipe();
+
+  let btn = document.getElementById("favBtn");
+  let text = document.getElementById("favText");
+
+  let index = favorites.findIndex(item => item.name === recipe.name);
+
+  if(index !== -1){
+    favorites.splice(index, 1);
+    text.innerText = "Favorite";
+    btn.classList.remove("saved");
+  } else {
+    favorites.push(recipe);
+    text.innerText = "Saved";
+    btn.classList.add("saved");
+  }
+
+  localStorage.setItem("favorites", JSON.stringify(favorites));
+}
+
+// set button state on load
+document.addEventListener("DOMContentLoaded", function(){
+
+  let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+  let recipe = getCurrentRecipe();
+
+  let btn = document.getElementById("favBtn");
+  let text = document.getElementById("favText");
+
+  if(favorites.find(item => item.name === recipe.name)){
+    text.innerText = "Saved";
+    btn.classList.add("saved");
+  }
+});
+
+// back navigation
+function goBack(){
+  let params = new URLSearchParams(window.location.search);
+
+  if(params.get("from") === "favorites"){
+    window.location.href = "../favorites.html";
+  } else {
+    window.location.href = "../recipes.html";
+  }
+}
+
+</script>
+
+</body>
+</html>
